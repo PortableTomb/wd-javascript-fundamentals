@@ -71,6 +71,9 @@ function areaOfRing(num1,num2){
     return area;
 }
 
+// function areaOfRing(num1,num2){
+//     return areaOfCircle(outerRadius)
+// }
 
 // Define a function named greet that takes 2 arguments
 //    firstName (string)
@@ -136,10 +139,11 @@ function toRoman(arabic){
 // 10, then return '$10.00'.
 //
 // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
+
 function toDolla(amount) {
     amount = amount.toFixed(2);
     return "$" + amount.toString();
-    }
+}
 
 // Define a function named percentage that takes two arguments
 //    numerator (number)
@@ -416,14 +420,65 @@ function capitalize(message){
 //    Return the argument but prefixed with spaces until it's 5 characters long
 // If the argument's length is 5 or more characters
 //    Return the argument
+// var spaces;
 
-function leftPad5(word){
-    var padString = " ";
+// var pad;
+// function leftPad5(word){
+//  if( word.length >= 5){
+//      return word;
+// } else {
+//     for (var i =" "; i <=5 - word.length; i++ ){
+//         pad= i += i + word;
+//         }
+//         return pad;
+//     }
+// }
 
-        while (word.length < 5 ){
-        return padString + word;
+// var pad = " ";
+// function leftPad5(word){
+//  if( word.length >= 5){
+//      return word;
+// } else {
+//     for (var i= 1; i <=5 - word.length; i++ ){
+//         i= pad += pad + word;
+//         }
+//         return pad;
+//     }
+// }
+
+function leftPad5(word) {
+    var pad= '';
+
+    if( word.length >= 5){
+         return word;
+     } else {
+    for (i = 0; i < 5 - word.length; i++){
+        var result = pad += ' ';
         }
     }
+    return result + word;
+}
+    // AssertionError: expected '      ' to equal '    a'.
+
+
+//
+//
+// function (stuff) {
+//     more stuff
+//     var pad = '';
+//     for (i = 0; i < 5 - word.length; i++){
+//         pad += ' ';
+//     }
+//     more stuff
+// }
+
+
+
+
+
+
+
+
 
 // Define a function named superPicky that takes one argument
 //    value (anything)
@@ -455,6 +510,12 @@ function superPicky(anything){
 //    Return the correct tax rate as a string using the table from http://www.efile.com/tax-service/tax-calculator/tax-brackets/
 
 function calculateTaxRate(salary, status) {
+    if(status !== 'single' || status !== 'joint'){
+        return 'Better call an accountant';
+    }
+    else if ( salary > 74900 ) {
+        return 'Better call an accountant';
+    }
 
     if( status === 'single' && salary <= 9225 ){
         return (salary *10);
@@ -465,12 +526,7 @@ function calculateTaxRate(salary, status) {
     else if( status === 'single' && salary >= 37451 && salary <= 74899 ){
         return (salary *25);
     }
-    if(status !== 'single' || status !== 'joint'){
-        return 'Better call an accountant';
-    }
-    else if ( salary > 74900 ) {
-        return 'Better call an accountant';
-    }
+
 }
 // var output = 'Output: ';
 // switch (foo) {
