@@ -343,10 +343,18 @@ function iceCreamPosition(pieTemperature, iceCreamFlavor){
 //
 // See: https://en.wikipedia.org/wiki/Leap_year#Algorithm
 
-function leapYear(year)
-{
-  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+function isLeapYear (year) {
+year = parseInt(year);
+if ( year % 4 === 0  &&  year % 100 !== 0  ||  year % 400 === 0 ) {
+        return true;
+    } else {
+        return false;
+    }
 }
+  // Every year divisible by 4 is a leap year.
+  // But every year divisible by 100 is NOT a leap year
+  // Unless the year is also divisible by 400, then it is still a leap year.
+
 
 // Define a function named shout that takes one argument
 //    message (string)
@@ -406,7 +414,6 @@ function capitalize(message){
     return capLetter.toUpperCase() + message.substring(message.length,1);
 }
 
-
 // Define a function named leftPad5 that takes one argument
 //    word (string)
 //
@@ -416,29 +423,6 @@ function capitalize(message){
 //    Return the argument
 // var spaces;
 
-// var pad;
-// function leftPad5(word){
-//  if( word.length >= 5){
-//      return word;
-// } else {
-//     for (var i =" "; i <=5 - word.length; i++ ){
-//         pad= i += i + word;
-//         }
-//         return pad;
-//     }
-// }
-
-// var pad = " ";
-// function leftPad5(word){
-//  if( word.length >= 5){
-//      return word;
-// } else {
-//     for (var i= 1; i <=5 - word.length; i++ ){
-//         i= pad += pad + word;
-//         }
-//         return pad;
-//     }
-// }
 
 function leftPad5(word) {
     var pad= '';
@@ -452,25 +436,6 @@ function leftPad5(word) {
     }
     return result + word;
 }
-    // AssertionError: expected '      ' to equal '    a'.
-
-
-//
-//
-// function (stuff) {
-//     more stuff
-//     var pad = '';
-//     for (i = 0; i < 5 - word.length; i++){
-//         pad += ' ';
-//     }
-//     more stuff
-// }
-
-
-
-
-
-
 
 
 
@@ -512,13 +477,13 @@ function calculateTaxRate(salary, status) {
     }
 
     if( status === 'single' && salary <= 9225 ){
-        return (salary *10);
+        return 15 / 100;
     }
     else if( status === 'single' && salary >= 9226 && salary <= 37450){
-        return (salary *15);
+        return 15 / 100;
     }
     else if( status === 'single' && salary >= 37451 && salary <= 74899 ){
-        return (salary *25);
+        return 25 / 100;
     }
 
 }
