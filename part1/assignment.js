@@ -343,15 +343,9 @@ function iceCreamPosition(pieTemperature, iceCreamFlavor){
 //
 // See: https://en.wikipedia.org/wiki/Leap_year#Algorithm
 
-function isLeapYear(year){
-    for ( i = 1899; i < 2400; i ++) {
-        if ( new Date( i, 1, 29 ).getMonth() === 1 ) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+function leapYear(year)
+{
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 }
 
 // Define a function named shout that takes one argument

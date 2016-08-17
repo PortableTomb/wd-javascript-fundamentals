@@ -318,7 +318,7 @@ var objB = { a: 2, b: 2, c: 2, d: 2 };
 // Another solution
 function combine(obj1, obj2){
 var objC = {};
-var combinedObject = Object.assign(objC, objA, objB);
+var combinedObject = Object.assign(objC, obj1, obj2);
 return objC;
  }
 
@@ -333,9 +333,7 @@ return objC;
 function invert(object){
 var target = {};
  for (var key in object) {
-     if ( object.hasOwnProperty(key) ) {
-         target[ object[key] ] = key;
-     }
+
  }
   return target;
 }
@@ -366,19 +364,13 @@ return objectArray;
 
 var given = { a: 1, b: 2, c:3 };
 
-function toPairs(object){
-
-var copyobj = {};
-
-    function copyOwnPropertiesFrom(target, source) {
-        Object.getOwnPropertyNames(source)  // (1)
-        .forEach(function(propKey) {  // (2)
-            var desc = Object.getOwnPropertyDescriptor(source, propKey); // (3)
-            Object.defineProperty(target, propKey, desc);  // (4)
-        });
-        return target;
-    }
-return copyobj();
+function toPairs (obj) {
+  var ret = [];
+  for(var key in obj) {
+    var value = obj[key]
+    ret.push([key, value])
+  }
+  return ret;
 }
 
 
@@ -388,11 +380,16 @@ return copyobj();
 // Return a new object where each key-value pair is from an element in the
 // argument. For example, given [['a', 1], ['b', 2]], then return
 // { a: 1, b: 2 }.
-function toPairs(object){
+var given = [['a', 1], ['b', 2]];
+function fromPairs(pairs){
 
-var obj = {};
-for (var i = 0; i < x.length; i++) {
-    var split = x[i].split(':');
-    obj[split[0].trim()] = split[1].trim();
-    }
+var result = {};
+
+ for (var i = 0; i < pairs.length; ++i){
+     var key = pairs[i][0];
+     var value = pairs[i][1];
+    result[key] = value;
+
+}
+return result;
 }
