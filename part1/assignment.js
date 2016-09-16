@@ -469,30 +469,17 @@ function superPicky(anything){
 //    Return the correct tax rate as a string using the table from http://www.efile.com/tax-service/tax-calculator/tax-brackets/
 
 function calculateTaxRate(salary, status) {
-    if(status !== 'single' || status !== 'joint'){
-        return 'Better call an accountant';
-    }
-    else if ( salary > 74900 ) {
-        return 'Better call an accountant';
-    }
-
-    if( status === 'single' && salary <= 9225 ){
+    
+    if ( status === 'single' && salary <= 9225 || status === 'joint'  && salary <= 9225 ){
         return 15 / 100;
     }
-    else if( status === 'single' && salary >= 9226 && salary <= 37450){
+    else if( status === 'single' && salary >= 9226 && salary <= 37450 || status === 'joint'  && salary >= 9226 && salary <= 37450){
         return 15 / 100;
     }
-    else if( status === 'single' && salary >= 37451 && salary <= 74899 ){
+    else if( status === 'single' && salary >= 37451 && salary <= 74899 || status === 'joint' && salary >= 37451 && salary <= 74899 ){
         return 25 / 100;
     }
-
+    else if (status !== 'single' || status !== 'joint' && salary > 74900 ){
+        return 'Better call an accountant';
+    }
 }
-// var output = 'Output: ';
-// switch (foo) {
-//   case 10:
-//     output += 'So ';
-//   case 1:
-//     output += 'What ';
-//     output += 'Is ';
-//   case 2:
-//     output += 'Your ';
