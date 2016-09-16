@@ -468,22 +468,21 @@ function superPicky(anything){
 // Otherwise
 //    Return the correct tax rate as a string using the table from http://www.efile.com/tax-service/tax-calculator/tax-brackets/
 
-function calculateTaxRate(salary, status) {
+function calculateTaxRate(salary, status){
+  if ((status !== 'single') && (status !== 'joint') ) {
+    return 'Better call an accountant';
+  }
+  if (salary > 74900){
+    return 'Better call an accountant';
+  } else if (((salary <= 9225) && (status === 'single')) || ((salary <= 18450) && (status === 'joint'))) {
+      var taxRate = '10%';
+      return taxRate;
+  } else if (((salary <= 37450) && (status === 'single')) || ((salary >= 18451) && (status === 'joint')))  {
+      var taxRate = '15%';
+      return taxRate;
+  } else  {
+      var taxRate = '25%';
+      return taxRate;
+  }
+  }
 
-  if ( status === 'single' && salary <= 9225 || status === 'joint' && salary <= 18450 ){
-   return '10%';
-    }
-  else if( status === 'single' && salary >= 9226 && salary <= 37450 || status === 'joint'  && salary >= 18,451 && salary <= 74900){
-   return '15%';
-    }
-  else if( status === 'single' && salary >= 37451 && salary <= 74899 ){
-   return '25%';
-    }
-  else if (status !== 'single' || status !== 'joint'){
-   return 'Better call an accountant';
-    }
-  else if (salary > 74900 ) {
-  return 'Better call an accountant';
-    }
-
-    }
